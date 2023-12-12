@@ -1,0 +1,23 @@
+* {
+    border: 1px solid red;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.calc-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 33vw;
+    height: 33vh;
+}
+
+.buttons {
+    display: flex;
+
+
+}
