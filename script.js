@@ -26,7 +26,7 @@ for(let i=0; i<12; i++){
 };
 
 /*create operation buttons*/
-let operationSymbols = {plus: "+",minus: "-",multiply:"*",divide:"/"};
+let operationSymbols = {plus: "+",minus: "-",multiply:"*",divide:"/",equals:"="};
 for(op in operationSymbols){
     let currentButt = document.createElement('button');
     opsArray.push(currentButt);
