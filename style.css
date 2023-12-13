@@ -21,3 +21,7 @@ body {
 
 
 }
+
+.output {
+    min-height: 2em;
+}
