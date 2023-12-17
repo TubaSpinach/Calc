@@ -10,19 +10,19 @@ for(let i=0; i<12; i++){
     buttArray.push(document.createElement('button'));
     buttArray[i].textContent = String(i+1);
     
-    if(i==9 || i==11){
-        buttArray[i].textContent = "";
+    if(i==9){
+        buttArray[i].textContent = "C";
+    } else if(i==11){
+        buttArray[i].textContent = "D";
     } else if(i==10){
         buttArray[i].textContent = "0";
     }
 
-    if(i<=8 || i==10){
-        buttArray[i].addEventListener('click', () => {
-            add_to_output(buttArray[i].textContent);
-        }
-        );
-    }
     
+    buttArray[i].addEventListener('click', () => {
+        add_to_output(buttArray[i].textContent);
+        }
+    );
     
     numKeys.appendChild(buttArray[i]);
 };
@@ -46,7 +46,15 @@ for(op in operationSymbols){
 };
 
 function add_to_output(input){
-    output.textContent += input;
+    if(input === "C") {
+        output.textContent = "";
+        little_output.innerHTML = "";
+    } else if(input === "D") {
+        output.textContent = output.textContent.slice(0,-1)
+    } else {
+        output.textContent += input;
+    }
+    
 }
 
 function op_to_output(input){
@@ -57,6 +65,7 @@ function op_to_output(input){
     };
 
     little_output.innerHTML += output.textContent + " " + input + "<br>";
+    little_output.scrollTo({top: 1000, left: 0, behavior: "smooth"});
     output.textContent = "";
 
     if(input !== "="){
@@ -64,7 +73,9 @@ function op_to_output(input){
         
     } else {
         little_output.innerHTML += evaluate_output() + "<br>";
-    };
+        little_output.scrollTo({top: 1000, left: 0, behavior: "smooth"});
+        clear_current_equation();
+    };  
 }
 
 function evaluate_output(){
@@ -82,4 +93,10 @@ function evaluate_output(){
             return currentEquation.number1/currentEquation.number2;
     };
      
+}
+
+function clear_current_equation(){
+    currentEquation.number1 = null;
+    currentEquation.number2 = null;
+    currentEquation.op = null;
 }
